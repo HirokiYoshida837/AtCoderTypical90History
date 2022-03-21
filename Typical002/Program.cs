@@ -12,8 +12,6 @@ namespace Typical002
 
             for (int bit = 0; bit < (1 << n); bit++)
             {
-                // Console.Write(bit + "\t");
-                // Console.WriteLine(Convert.ToString(bit, 2).PadLeft(n, '0'));
 
                 var bitS = Convert.ToString(bit, 2).PadLeft(n, '0')
                     .ToList()
@@ -29,20 +27,20 @@ namespace Typical002
                 {
                     if (bitS[i1] == '(')
                     {
-                        sum.Add(sum[sum.Count - 1] + 1);
+                        sum.Add(sum[^1] + 1);
                     }
                     else
                     {
-                        sum.Add(sum[sum.Count - 1] - 1);
+                        sum.Add(sum[^1] - 1);
 
-                        if (sum[sum.Count -1] < 0)
+                        if (sum[^1] < 0)
                         {
                             flg = false;
                         }
                     }
                 }
 
-                if (sum[sum.Count - 1] == 0 && flg)
+                if (sum[^1] == 0 && flg)
                 {
                     Console.WriteLine(new string(bitS.ToArray()));
                 }
